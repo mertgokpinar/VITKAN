@@ -1,0 +1,48 @@
+program: train_cv.py
+method: random
+name: sweep
+metric:
+  goal: maximize
+  name: Final avarage c-index
+  goal: maximize
+  name: avarage train c-index
+  goal: minimize 
+  name: loss_test
+  goal: minimize 
+  name: loss_train
+parameters:
+  exp_name: 
+    values: ['thesis_clinical_luad_attention_v2']
+  split_directory: 
+    values: ['splits/HISTOSSL_CTRANS_clinical_luad_multi_img_equal_distributed_patients.pkl']
+  mode:
+    values: ['SingleVisionNet']
+  model_name:
+    values: ['SingleVisionNet']
+  fusion_type:
+    values: ['self_attention']
+  visnet:
+    values: ['ctrans'] # [vit | swin | ctrans | histossl | uni]
+  omic_model:
+    values: ['fcn'] # options [vae | fcn | encoder]
+  n_head:
+    values: [2, 4]
+  input_size_omic:
+    values: [9]
+  niter:
+    values: [50, 100]
+  batch_size: 
+    values: [32,56,64,80]
+  lr:
+    values: [0.0001, 0.0002, 0.0003, 0.0004, 0.0005, 0.0006, 0.0007, 0.0008, 0.0009]
+  weight_decay:
+    values: [0.001, 0.002, 0.003, 0.004, 0.005, 0.006, 0.007, 0.008, 0.009]
+  dropout_rate:
+    values: [0.0, 0.1 , 0.2, 0.3, 0.4, 0.5]
+  pooling_ratio:
+    values: [0.0, 0.1 , 0.2, 0.3, 0.4, 0.5]
+  optimizer_type:
+    values: ['adabound', 'adam']
+  init_type:
+    values: ['none', 'max']
+  

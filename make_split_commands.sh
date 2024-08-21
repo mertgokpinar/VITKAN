@@ -1,0 +1,10 @@
+#CUDA_VISIBLE_DEVICES=0, python make_splits.py --split_name HISTOSSL_CTRANS_clinical_lusc --split_type clinical --clinical_data clinical_lusc_data.tsv --pnas_split '/15_fold_lusc_splits.csv' --split_number 15
+# CUDA_VISIBLE_DEVICES=0, python make_splits.py --split_name VIT_HISTO_clinical_lusc_1img --split_type clinical --clinical_data clinical_lusc_data.tsv --pnas_split '/5_fold_lusc_splits.csv'
+# CUDA_VISIBLE_DEVICES=1, python make_splits.py --split_name VIT_HISTO_mirna_cnv_luad_1img --split_type omic --clinical_data clinical_luad_data.tsv --pnas_split '/5_fold_luad_splits.csv'
+
+#CUDA_VISIBLE_DEVICES=1, python make_splits.py --split_name CONCH_clinical_lusc_multi_img_equal_distributed_patients --split_type clinical --features conch-features --clinical_data clinical_lusc_data.tsv --pnas_split '/5_fold_lusc_splits.csv' --split_number 5
+#CUDA_VISIBLE_DEVICES=1, python make_splits.py --split_name UNI_clinical_lusc_multi_img_equal_distributed_patients --split_type clinical --features uni-features --clinical_data clinical_lusc_data.tsv --pnas_split '/5_fold_lusc_splits.csv' --split_number 5
+#CUDA_VISIBLE_DEVICES=0, python make_splits.py --split_name CONCH_clinical_luad_multi_img_equal_distributed_patients --split_type clinical --features conch-features --clinical_data clinical_luad_data.tsv --pnas_split '/5_fold_luad_splits.csv' --split_number 5
+CUDA_VISIBLE_DEVICES=0, python make_splits.py --split_name UNI_clinical_luad_multi_img_equal_distributed_patients --split_type clinical --features uni-features --clinical_data clinical_luad_data.tsv --pnas_split '/5_fold_luad_splits.csv' --split_number 5
+CUDA_VISIBLE_DEVICES=0, python make_splits.py --split_name UNI_mirna_cnv_luad_multi_img_equal_distributed_patients --split_type omic --features uni-features --clinical_data clinical_luad_data.tsv --pnas_split '/5_fold_luad_splits.csv' --split_number 5
+CUDA_VISIBLE_DEVICES=0, python make_splits.py --split_name UNI_mirna_cnv_lusc_multi_img_equal_distributed_patients --split_type omic --features uni-features --clinical_data clinical_lusc_data.tsv --pnas_split '/5_fold_lusc_splits.csv' --split_number 5

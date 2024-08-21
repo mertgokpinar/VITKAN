@@ -1,0 +1,46 @@
+# config.yaml for singlevision_KAN
+program: train_cv.py
+method: random
+name: sweep
+metric:
+  goal: maximize
+  name: Final avarage c-index
+  goal: minimize 
+  name: loss_test
+  goal: minimize 
+  name: loss_train
+parameters:
+  exp_name: 
+    values: ['sweep_CONCH_clinical_luad']
+  split_directory: 
+    values: ['splits/CONCH_clinical_luad_multi_img_equal_distributed_patients.pkl']
+  model_name:
+    values: ['SingleVisionNet_KAN']
+  mode:
+    values: ['SingleVisionNet_KAN']
+  reg_type:
+    values: ['omic'] # options: omic | vae_omic
+  # visnet:
+  #   values: ['ctrans'] # options [vit | swin | ctrans | uni]
+  omic_model:
+    values: ['fast_kan'] #options [vae | fcn | encoder]
+  kan_hlayer:
+    values: [1, 2, 3, 4]
+  kan_gridsize:
+    values: [3]
+  input_size_omic:
+    values: ['9']
+  niter:
+    values: [50]
+  batch_size: 
+    values: [8,  16, 32]
+  lr:
+    values: [0.0005, 0.0006, 0.0007, 0.0008, 0.0009]
+  weight_decay:
+    values: [0.0001, 0.0003, 0.0005, 0.0008, 0]
+  optimizer_type:
+    values: ['adam','AdamW']
+  init_type:
+    values: ['none']
+  lr_policy:
+    values: ['linear']
