@@ -1,16 +1,12 @@
 ## *VITKAN: Vision Transformer supported Kolmogorov-Arnold Networks for Survival Prediction in Lung Cancer*
 
 >  Lung cancer is one of the most common and
-deadly forms of cancer worldwide, influenced by environ-
-mental factors, lifestyle choices, and genetics. Finding new
+deadly forms of cancer worldwide, influenced by environmental factors, lifestyle choices, and genetics. Finding new
 ways to predict survival outcomes for lung cancer patients
 in cancer research is crucial. Using whole slide images and
-tabular data fusion in deep learning-based survival pre-
-diction represents a significant leap in the field; however,
-these techniques fail to capture the complexity of histologi-
-cal and tabular features, struggle to effectively fuse them,
-and lack clinical data integration, leading to poor perfor-
-mance in survival prediction applications. In this study, we
+tabular data fusion in deep learning-based survival prediction represents a significant leap in the field; however,
+these techniques fail to capture the complexity of histological and tabular features, struggle to effectively fuse them,
+and lack clinical data integration, leading to poor performance in survival prediction applications. In this study, we
 aimed to overcome these challenges by presenting novel
 Kolmogorov-Arnold Networks for tabular data processing
 and Fusion tasks and advanced vision models for histology
