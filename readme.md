@@ -36,7 +36,7 @@ conda activate vitkan
 ```
   Install Requirements
 ```
-pip install requirements.txt
+pip install -r requirements.txt
 ```
  Clone Efficient KAN Repo into VITKAN diractory
 ```bash
@@ -51,19 +51,27 @@ You can access publicly available TCGA-LUAD and TCGA-LUSC datasets from [NIH Gen
 
 **Preprocess**
 
-For preprocessing raw WSI, we used publicly available [Clam](https://github.com/mahmoodlab/CLAM), We divide WSI into 224x224 patches and extracted WSI features using following publicly available pre-trained histology vision transformer weights listed below.
+For preprocessing raw Diagnostic WSI, we used publicly available [Clam](https://github.com/mahmoodlab/CLAM), we divided each WSI into 224x224 patches and extracted WSI features using following publicly available pre-trained histology vision transformer weights listed below.
 
 - [CTransPath](https://github.com/Xiyue-Wang/TransPath)
 - [HistoSSL](https://github.com/owkin/HistoSSLscaling)
 - [UNI](https://github.com/mahmoodlab/UNI)
 - [CONCH](https://github.com/mahmoodlab/CONCH)
 
+**Create Splits**
+
+Example commands given [here](make_split_commands.sh) for creating train/test splits.
+
 
 ## **Training**
 
+**Options**
+
+Before starting any training, it is highly recommended setting data paths, fixed variables and other training options from this [file](options.py).
+
 **Wandb Training**
 
-VITKAN supports training with Weight and Biases, a strong hyperparameter search tool for deep learning models, you can use your own configration file or you can use an example config file from [cfg](cfg).
+VITKAN supports training with Weight and Biases, a strong hyperparameter search tool for deep learning models, you can use your own configration file or you can use see example config files from [here](cfg).
 
 You can init your Wandb sweep with:
 ```python
@@ -73,11 +81,11 @@ Then start your Wandb sweep using:
 ```python
 CUDA_VISIBLE_DEVICES=0 wandb agent <your_sweep_cmd_here>
 ```
-You can use Tmux for training multiple Wandb Agents, refer to [here](run_tmux.sh) for example commands.
+You can use Tmux for training with multiple Wandb Agents at the same time, please refer to [here](run_tmux.sh) for example commands.
 
 **Training without Wandb**
 
-If you want to traing without Wandb, You can setup your parameters from [here](options.py) and use the example command bellow for training.
+If you want to perform training without Wandb, You can setup your parameters from [here](options.py) and use the example command bellow for training.
 
 ```python
 CUDA_VISIBLE_DEVICES=0 python train_cv.py --batch_size=8 --exp_name= exp_name --init_type=none --input_size_omic=9 --kan_gridsize=3 --kan_hlayer=2 --lr=0.0008 --lr_policy=linear --mode=SingleVisionNet_KAN --wandb=0
@@ -94,12 +102,12 @@ CUDA_VISIBLE_DEVICES=0 python test_cv.py
 
 ## **Reference**
 
-If you find our work useful in your research or if you use parts of this code, please consider citing:
+If you find our work useful for your research or if you used parts of this code, please consider citing:
 
 ```bibtex
 @misc{mert2024vitkan,
     title={VITKAN:Vision Transformer supported Kolmogorov-Arnold Networks for Survival Prediction in Lung Cancer},
-    author={Gokpinar, A., Almalioglu, Y. and Turan, M.},
+    author={Gokpinar, M., Almalioglu, Y. and Turan, M.},
     year={2024}
 }
 ```
