@@ -8,7 +8,7 @@ from torch.utils.data import RandomSampler
 
 from data_loaders import VitkanDatasetLoader
 from networks import define_net, define_reg, define_optimizer, define_scheduler
-from models.vae_basic_model import VaeBasicModel
+#from models.vae_basic_model import VaeBasicModel
 from utils import unfreeze_unimodal, CoxLoss, CIndex_lifeline, cox_log_rank, accuracy_cox, mixed_collate, count_parameters,collate_MIL
 from torch.utils.tensorboard import SummaryWriter
 #from GPUtil import showUtilization as gpu_usage
@@ -36,7 +36,7 @@ def train(opt, data, device, k):
     model = define_net(opt, k)
     optimizer = define_optimizer(opt, model)
     scheduler = define_scheduler(opt, optimizer)
-    # required arguments for vae model -mg
+    # vae omic model is not supported at the moment -mg
     if opt.omic_model == 'vae':
         #omic_model = omic_vae(opt)
         print('INITIALIZING OMIC_VAE MODEL')
